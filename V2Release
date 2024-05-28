@@ -1,5 +1,5 @@
 local streamermode = false -- Streamer Mode: Hides your user ID, and username
-local useCustomTheme = true -- Use a custom theme
+local useCustomTheme = false -- Use a custom theme
 
 local customtheme = {
     TopBar = Color3.fromRGB(0, 0, 0),
