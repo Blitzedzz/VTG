@@ -1,0 +1,6 @@
+if game.Players.LocalPlayer.Name == "rew" then
+
+   else
+print('made by blitzedzz")
+saveinstance()
+end
