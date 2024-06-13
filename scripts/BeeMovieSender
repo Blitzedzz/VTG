@@ -1,15 +1,12 @@
--- Load the Bee Movie script from the provided URL
-local url = "https://gist.githubusercontent.com/MattIPv4/045239bc27b16b2bcf7a3a9a4648c08a/raw/2411e31293a35f3e565f61e7490a806d4720ea7e/bee%2520movie%2520script"
+local url = "https://raw.githubusercontent.com/Blitzedzz/VTG/main/etc/beemoviescript"
 local scriptLines = {}
 
--- Function to fetch the script lines from the URL
 function fetchScriptLines()
     local success, response = pcall(function()
         return game:HttpGet(url)
     end)
     
     if success then
-        -- Split the response into lines
         scriptLines = {}
         for line in response:gmatch("[^\r\n]+") do
             table.insert(scriptLines, line)
@@ -19,14 +16,12 @@ function fetchScriptLines()
     end
 end
 
--- Function to send each line as a chat message
 function sendScriptLines()
     for i, line in ipairs(scriptLines) do
-        wait(1)  -- Adjust the wait time as necessary to control the speed of messages
+        wait(1)
         game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(line, "All")
     end
 end
 
--- Fetch and send the script lines when the script runs
 fetchScriptLines()
 sendScriptLines()
