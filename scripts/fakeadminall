@@ -1,0 +1,27 @@
+getgenv().Chars = {
+    ";admin all",
+    "⸻⸻⸻⸻⸻",
+    "► You are now admin!",
+    "⸻⸻⸻⸻⸻"
+}
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TextChatService = game:GetService("TextChatService")
+local IsLegacy = (TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService)
+local ChatRemote = ReplicatedStorage:FindFirstChild("SayMessageRequest", true)
+local Channel = not IsLegacy and TextChatService.TextChannels.RBXGeneral
+
+local Chat = function(Message)
+    if IsLegacy then
+        ChatRemote:FireServer(Message, "All")
+    else
+        Channel:SendAsync(Message)
+    end
+end
+
+local chars = getgenv().Chars
+
+local weird = " " .. string.rep("ৌ", 44)
+local weird2 = " " .. string.rep("ৌ", 56)
+local weird3 = " " .. string.rep("ৌ", 57)
+Chat(("%s%s%s%s%s%s%s"):format(chars[1],weird,chars[2],weird2,chars[3],weird3,chars[4]))
